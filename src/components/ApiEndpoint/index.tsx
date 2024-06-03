@@ -22,8 +22,8 @@ export default function ApiEndpoint({ method, title, path, to }: ApiEndpointProp
     <a href={to} className={styles.noUnderline}>
       <div className={styles.apiEndpoint}>
         { methods[method] }
-        <div className={styles.title}>
-          <span>{title}</span>
+        <div className={styles.content}>
+          <span className={styles.title}>{title}</span>
           <span className={styles.path}>{path}</span>
         </div>
       </div>

@@ -51,15 +51,18 @@
   background-color: hotpink;
 }
 
-.title {
+.content {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
+.title {
+  font-weight: bold;
+}
+
 .path {
   font-family: "Fira Code", Consolas, monospace;
-  color: #fff;
   font-size: smaller;
   opacity: 0.6;
 }
