@@ -7,6 +7,10 @@ sidebar_position: 4
 - 如果我的 擴充 想在 `onServerStartEvent` 前做些什麼 ( 通常是自製的 `日誌擴充` 等 需要在其他擴充前 初始化完成 )
 - 這時 `Inject 注入` 就登場了
 - 注入新的 `onServerStartEventForExample` 讓其在 `onServerStartEvent` 前 先被執行
+:::danger
+- 應謹慎使用 `Inject 注入` ，因其會破壞原生方法
+- 使用 `Inject 注入` 的擴充，應在 README 中註明，提醒使用者
+:::
 
 ## 原始 類(class)、方法(function)
 - `cdps/plugin/events.py`
