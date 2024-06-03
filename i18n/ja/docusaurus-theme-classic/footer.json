@@ -1,6 +1,6 @@
 {
   "link.title.技術文件": {
-    "message": "技術文件",
+    "message": "ドキュメント",
     "description": "The title of the footer links column with title=技術文件 in the footer"
   },
   "link.title.ExpTech Studio": {
@@ -8,11 +8,11 @@
     "description": "The title of the footer links column with title=ExpTech Studio in the footer"
   },
   "link.title.社群連結": {
-    "message": "社群連結",
+    "message": "ソーシャル",
     "description": "The title of the footer links column with title=社群連結 in the footer"
   },
   "link.title.其他連結": {
-    "message": "其他連結",
+    "message": "他",
     "description": "The title of the footer links column with title=其他連結 in the footer"
   },
   "link.item.label.API": {
@@ -28,11 +28,11 @@
     "description": "The label of footer link with label=CDPS linking to /docs/cdps/intro"
   },
   "link.item.label.服務條款": {
-    "message": "服務條款",
+    "message": "利用規約",
     "description": "The label of footer link with label=服務條款 linking to https://exptech.com.tw/tos"
   },
   "link.item.label.隱私權聲明": {
-    "message": "隱私權聲明",
+    "message": "プライバシーポリシー",
     "description": "The label of footer link with label=隱私權聲明 linking to https://raw.githubusercontent.com/ExpTechTW/TREM/Release/terms/privacy_policy"
   },
   "link.item.label.Youtube": {
@@ -48,7 +48,7 @@
     "description": "The label of footer link with label=Discord linking to https://discord.com/invite/exptech-studio"
   },
   "link.item.label.Blog": {
-    "message": "Blog",
+    "message": "ブログ",
     "description": "The label of footer link with label=Blog linking to /blog"
   },
   "link.item.label.GitHub": {

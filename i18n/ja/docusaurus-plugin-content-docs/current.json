@@ -8,7 +8,7 @@
     "description": "The label for category 地震 in sidebar apiSidebar"
   },
   "sidebar.apiSidebar.category.氣象": {
-    "message": "氣象",
+    "message": "天気",
     "description": "The label for category 氣象 in sidebar apiSidebar"
   }
 }
