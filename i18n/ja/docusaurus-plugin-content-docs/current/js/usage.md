@@ -2,27 +2,27 @@
 sidebar_position: 2
 ---
 
-# Usage
+# 使用方法
 
-ExpTech API Wrapper provides `ExpTechApi` and `ExpTechWebsocket` two entry classes.
+ExpTech APIラッパーは`ExpTechApi`と`ExpTechWebsocket`の2つのエントリー・クラスを提供します
 
 ## ExpTechApi
 
-When sending normal API requests you can use the `ExpTechApi` class.
+通常のAPIリクエストを送信する際には、`ExpTechApi`クラスを使用することができる
 
 ```ts
 import { ExpTechApi } from "@ExpTechTW/api-wrapper";
 
-const api = new ExpTechApi(/* API key here */);
+const api = new ExpTechApi(/* APIキーはこちら */);
 ```
 
-You can also change the api key later by using `setApiKey(key)`.
+`setApiKey(key)`を使えば、後でapiキーを変更することもできる
 
 ```ts
-api.setApiKey(/* new API key here */)
+api.setApiKey(/* 新しいAPIキーはこちら */)
 ```
 
-API requests can be called by invoking request methods.
+APIリクエストは、リクエスト・メソッドを呼び出すことで呼び出すことができる
 
 ``` ts
 api
@@ -53,26 +53,26 @@ Returns PartialReport[]
 
 :::note
 
-Using WebScoket feature requiring you to have an VIP ExpTech Account.
+WebScoket機能を使用するには、VIP ExpTechアカウントが必要です
 
 :::
 
-You can listen to events by establishing a WebSocket connection to our server with the `ExpTechWebsocket` class.
+`ExpTechWebsocket`クラスを使用してサーバーにWebSocket接続を確立することで、イベントをリッスンすることができます
 
-### Obtaining Auth Token
+### 認証トークンの取得
 
-First we'll need to get an Auth Token before starting a WebSocket connection with `api.getAuthToken()` method in the `ExpTechApi` class.
+まず、WebSocket 接続を開始する前に、`ExpTechApi`クラスの`api.getAuthToken()`メソッドで認証トークンを取得する必要がある
 
 ```ts
 import { ExpTechApi } from "@ExpTechTW/api-wrapper";
 
 const api = new ExpTechApi();
 
-// 驗證權杖資訊
+// 認証セプター情報
 const credentials = {
-  email: "Email",
-  password: "Password",
-  name: `Device Name/Software Name/Software Version/Device Version`
+  email: "電子メール",
+  password: "パスワード",
+  name: `デバイス名/ソフトウェア名/ソフトウェアバージョン/デバイスバージョン`
 }
 
 api
@@ -82,39 +82,39 @@ api
 
 :::note
 
-We strongly recommend you to store credentials inside a separated `.env` file.  
-You can refer to the [Documentation](https://www.npmjs.com/package/dotenv) of `dotenv` to learn more about how to separate credentials into the `.env` file.
+認証情報は`.env`ファイルに分割して保存することを強く推奨する
+`.env`ファイルにクレデンシャルを分ける方法については、`dotenv`の[ドキュメント](https://www.npmjs.com/package/dotenv)を参照してください
 
 :::
 
-### Establishing Connection
+### コネクションの確立
 
-We can then use the Auth Token to estbalish a WebSocket connection.
+そして、Auth Tokenを使ってWebSocket接続を確立することができる
 
 ```ts
 import { ExpTechWebsocket, SupportedService } from "@ExpTechTW/api-wrapper";
 
-// WebSocket client config
+// WebSocketクライアント設定
 const config = {
-  key: "Auth Token you obtained in the previous step";
+  key: "前のステップで取得した認証トークン";
   service: [
     SupportedService.RealtimeStation,
     SupportedService.Eew
   ];
 }
 
-// Establish a WebSocket connection
+// WebSocket接続を確立する
 const ws = new ExpTechWebsocket(config);
 ```
 
-WebSocket client config is described below:
+WebSocketクライアント・コンフィグを以下に説明する：
 
 <details>
   <summary>
     key: `string`
   </summary>
   
-  The Auth Token string, requires a VIP ExpTech Account when using.
+  認証トークン文字列を使用するには、VIP ExpTechアカウントが必要です
 </details>
 
 <details>
@@ -122,17 +122,17 @@ WebSocket client config is described below:
     service: `SupportedService[]`
   </summary>
   
-  A list of services to subscribe to, you can take a look inside `SupportedService` enum and use it without having to remember service names.
+  サービス名を覚えていなくても、`SupportedService`列挙型の中を見て、それを使うことができる
 
-  Currently supported services:
-  - `trem.rts` - Real-time Seismic data
-  - `trem.rtw` - Real-time Seismograph wave data
-  - `websocket.eew` - Earthquake Early Warning events
-  - `trem.eew` - TREM Earthquake Early Warning events
-  - `websocket.report` - Earthquake reports from CWA
-  - `websocket.tsunami` - Tsunami information from CWA
-  - `cwa.intensity` - Intensity reports from CWA
-  - `trem.intensity` - TREM Intensity reports
+  現在サポートされているサービス：
+  - `trem.rts` - リアルタイム地震データ
+  - `trem.rtw` - リアルタイム地震波データ
+  - `websocket.eew` - 緊急地震速報
+  - `trem.eew` - TREM緊急地震速報
+  - `websocket.report` - CWA（中央氣象署）からの地震レポート
+  - `websocket.tsunami` - CWA（中央氣象署）からの津波情報
+  - `cwa.intensity` - CWA（中央氣象署）からの震度レポート
+  - `trem.intensity` - TREM震度レポート
 </details>
 
 <details>
@@ -140,14 +140,14 @@ WebSocket client config is described below:
     config: `Partial<{[SupportedService.RealtimeWave]: number[];}>`
   </summary>
   
-  Config for each services, the only config currently supports is `trem.rtw`.
+  各サービスの設定は、現在`trem.rtw`のみをサポートしている
 
   <details>
     <summary>
       \[SupportedService.RealtimeWave\]: `number[]`
     </summary>
     
-    List of Seismograph IDs to recevie wave data.
+    波浪データを受信する地震計IDのリスト。
   </details>
 
 </details>
