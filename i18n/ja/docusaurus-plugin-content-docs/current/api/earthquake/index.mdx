@@ -1,0 +1,14 @@
+---
+sidebar_position: 1
+pagination_prev: null
+pagination_next: null
+---
+
+import ApiEndpoint from '@site/src/components/ApiEndpoint';
+
+# 地震
+
+<div style={{display: 'flex', flexDirection: 'column', gap: '8px'}}>
+  <ApiEndpoint method='get' title='地震レポート一覧' path='/eq/report' to='/ja/docs/api/earthquake/report'/>
+  <ApiEndpoint method='get' title='詳細な地震レポートを入手する' path='/eq/report/:id' to='/ja/docs/api/earthquake/report-detail'/>
+</div>

@@ -1,0 +1,69 @@
+.apiEndpoint {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+
+  background-color: hsla(0 0% 50% / 16%);
+  border-radius: 32px;
+
+  transition: border 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.apiEndpoint:hover {
+  border: 2px solid;
+}
+
+.method {
+  padding: 4px 16px;
+  border-radius: 32px;
+  font-weight: bold;
+  color: #000;
+  user-select: none;
+}
+
+.get {
+  background-color: springgreen;
+}
+
+.post {
+  background-color: gold;
+}
+
+.put {
+  background-color: cornflowerblue;
+}
+
+.patch {
+  background-color: mediumpurple;
+}
+
+.delete {
+  background-color: salmon;
+}
+
+.head {
+  background-color: mediumseagreen;
+}
+
+.options {
+  background-color: hotpink;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.path {
+  font-family: "Fira Code", Consolas, monospace;
+  color: #fff;
+  font-size: smaller;
+  opacity: 0.6;
+}
+
+.noUnderline:hover {
+  text-decoration: none;
+}
