@@ -4,14 +4,14 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'ExpTech 技術文件',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'ExpTech 技術文件',
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
   url: 'https://exptech.com.tw',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/docs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
