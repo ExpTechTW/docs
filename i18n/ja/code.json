@@ -40,7 +40,7 @@
     "description": "古い/次の記事に移動するためのブログ記事ボタンのラベル"
   },
   "theme.blog.post.plurals": {
-    "message": "つの投稿|{count}の投稿",
+    "message": "{count}の投稿",
     "description": "\"{count}\"投稿の複数形ラベル。あなたの言語がサポートしている数だけ、複数形(\"|\"で区切られる)を使ってください(https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html 参照)。"
   },
   "theme.blog.tagTitle": {
@@ -68,7 +68,7 @@
     "description": "パンのARIAラベル"
   },
   "theme.docs.DocCard.categoryDescription.plurals": {
-    "message": "1項目|{count}項目 ",
+    "message": "{count}項目 ",
     "description": "生成されたインデックスで、このカテゴリがいくつの項目を含むかについてのカテゴリカードのデフォルトの説明"
   },
   "theme.docs.paginator.navAriaLabel": {
@@ -227,8 +227,8 @@
     "description": "抜粋からブログ記事全体へのリンクのためのARIAラベル"
   },
   "theme.blog.post.readingTime.plurals": {
-    "message": "1分で読める|{readingTime}分で読める",
-    "description": "\"{readingTime}分で読める\"タグが付けられたドキュメントの複数形ラベル。あなたの言語がサポートしている数だけ、複数形(\"|\"で区切られる)を使ってください(https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html 参照)。"
+    "message": "{readingTime}分読み",
+    "description": "\"{readingTime}分読み\"タグが付けられたドキュメントの複数形ラベル。あなたの言語がサポートしている数だけ、複数形(\"|\"で区切られる)を使ってください(https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html 参照)。"
   },
   "theme.docs.breadcrumbs.home": {
     "message": "ホームページ",
