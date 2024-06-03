@@ -39,6 +39,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/exptechtw/docs/tree/main/',
+          editLocalizedFiles: true,
         },
         blog: {
           showReadingTime: true,
@@ -46,6 +47,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/exptechtw/docs/tree/main/',
+          editLocalizedFiles: true,
         },
         theme: {
           customCss: './src/css/custom.css',
