@@ -112,7 +112,7 @@ const config: Config = {
             },
             {
               label: 'CDPS',
-              to: '/docs/cdps/intro',
+              to: '/docs/cdps/start/index',
             },
           ],
         },
