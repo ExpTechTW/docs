@@ -1,0 +1,54 @@
+.apiEndpointPath {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+}
+
+.method {
+  padding: 4px 16px;
+  border-radius: 32px;
+  font-weight: bold;
+  color: #000;
+  user-select: none;
+}
+
+.get {
+  background-color: springgreen;
+}
+
+.post {
+  background-color: gold;
+}
+
+.put {
+  background-color: cornflowerblue;
+}
+
+.patch {
+  background-color: mediumpurple;
+}
+
+.delete {
+  background-color: salmon;
+}
+
+.head {
+  background-color: mediumseagreen;
+}
+
+.options {
+  background-color: hotpink;
+}
+
+.baseUrl {
+  opacity: 0.4;
+  font-size: smaller;
+}
+
+.path {
+  background-color: hsla(0 0% 50% / 16%);
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-family: "Fira Code", Consolas, monospace;
+}

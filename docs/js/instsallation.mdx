@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# 安裝
+
+:::note
+
+這個套件會不定期更新，如果你發現尚有問題或發生錯誤，請在 Github 上[開啟新問題](https://github.com/ExpTechTW/api-wrapper/issues/new)。
+
+:::
+
+## 需求
+
+- [Node.js](https://nodejs.org) 12 或以上
+
+## 使用套件管理器安裝
+
+API Wrapper 提供使用套件管理器進行安裝。
+
+<Tabs groupId="pacakge-manager">
+  <TabItem value="npm" label="npm">
+    ```bash
+    npm i git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn add git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    ```bash
+    pnpm add git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+</Tabs>
+
+## 手動安裝
+
+原始碼有包含已經建置好的檔案可以使用。
+
+1. 複製儲存庫
+
+   ```bash
+   git clone https://github.com/ExpTechTW/api-wrapper.git
+   ```
+
+2. 引用 `dist` 資料夾下的檔案
+
+   `dist` 資料夾中包含了三個檔案和一個資料夾
+
+   - [`/types`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/types) - 包含了所有類別定義檔案
+   - [`index.js`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.js) - CommonJS 版本
+   - [`index.min.js`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.min.js) - 最小化後的 CommonJS 版本
+   - [`index.mjs`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.mjs) - ESModule 版本
