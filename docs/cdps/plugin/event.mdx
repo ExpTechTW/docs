@@ -28,6 +28,8 @@ event_manager.register_listener(onServerStartListener()) # 註冊 監聽器 到 
 ```
 
 ## event_listener
+- 使用 裝飾器 裝飾 函數，被裝飾的函數將會作為對應事件的 回調函數。
+- 傳入要監聽的事件
 ```py
 from cdps.plugin.events import onServerStartEvent
 from cdps.plugin.manager import Listener, event_listener
