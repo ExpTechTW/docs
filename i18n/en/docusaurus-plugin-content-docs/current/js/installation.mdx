@@ -1,0 +1,59 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Installation
+
+:::note
+
+This module is regularly updated, if you find a bug that hasn't been addressed, please [file an issue](https://github.com/ExpTechTW/api-wrapper/issues/new)。
+
+:::
+
+## Requirements
+
+- [Node.js](https://nodejs.org) 12 or above
+
+## Using a package manager
+
+ExpTech API Wrapper provides ways to install via package managers.
+
+<Tabs groupId="pacakge-manager">
+  <TabItem value="npm" label="npm">
+    ```bash
+    npm i git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+  <TabItem value="yarn" label="Yarn">
+    ```bash
+    yarn add git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    ```bash
+    pnpm add git+https://github.com/ExpTechTW/api-wrapper.git
+    ```
+  </TabItem>
+</Tabs>
+
+## Manual Installation
+
+Bundled files are included in the source repository.
+
+1. Clone the repository and place it inside of your project.
+
+   ```bash
+   git clone https://github.com/ExpTechTW/api-wrapper.git
+   ```
+
+2. Import files from `dist` folder.
+
+   `dist` folder contains three files and one folder:
+
+   - [`/types`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/types) - All type definitions for TypeScript Intellisense
+   - [`index.js`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.js) - CommonJS module file
+   - [`index.min.js`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.min.js) - Minified CommonJS module file
+   - [`index.mjs`](https://github.com/ExpTechTW/api-wrapper/blob/main/dist/index.mjs) - ESModule module file

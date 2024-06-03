@@ -101,15 +101,15 @@ const config: Config = {
           items: [
             {
               label: 'API',
-              to: '/docs/api',
+              to: '/docs/api/earthquake/report',
             },
             {
               label: 'API Wrapper',
-              to: '/docs/js',
+              to: '/docs/js/installation',
             },
             {
               label: 'CDPS',
-              to: '/docs/cdps',
+              to: '/docs/cdps/intro',
             },
           ],
         },
