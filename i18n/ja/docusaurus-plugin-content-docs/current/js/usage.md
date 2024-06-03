@@ -122,7 +122,7 @@ WebSocketクライアント・コンフィグを以下に説明する：
     service: `SupportedService[]`
   </summary>
   
-  サービス名を覚えていなくても、`SupportedService`列挙型の中を見て、それを使うことができる
+  以下は購読するサービスのリストで、`SupportedService` 列挙の中を見て、サービス名を覚えることなく使用することができます
 
   現在サポートされているサービス：
   - `trem.rts` - リアルタイム地震データ
