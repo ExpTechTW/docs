@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # 使用方法
 
-ExpTech APIラッパーは`ExpTechApi`と`ExpTechWebsocket`の2つのエントリー・クラスを提供します
+ExpTech API Wrapperは`ExpTechApi`と`ExpTechWebsocket`の2つのエントリー・クラスを提供します
 
 ## ExpTechApi
 

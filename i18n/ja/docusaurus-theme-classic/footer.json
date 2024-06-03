@@ -20,8 +20,8 @@
     "description": "docs/api/earthquake/reportにリンクしているlabel=APIのフッターリンクのラベル"
   },
   "link.item.label.API Wrapper": {
-    "message": "APIラッパー",
-    "description": "/docs/js/installationにリンクしているlabel=APIラッパーのフッターリンクのラベル"
+    "message": "API Wrapper",
+    "description": "/docs/js/installationにリンクしているlabel=API Wrapperのフッターリンクのラベル"
   },
   "link.item.label.CDPS": {
     "message": "CDPS",
