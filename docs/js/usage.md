@@ -96,7 +96,7 @@ import { ExpTechWebsocket, SupportedService } from "@ExpTechTW/api-wrapper";
 
 // WebSocket 客戶端設定
 const config = {
-  key: "剛剛取得的驗證權杖";
+  key: "上一步取得的驗證權杖";
   service: [
     SupportedService.RealtimeStation,
     SupportedService.Eew

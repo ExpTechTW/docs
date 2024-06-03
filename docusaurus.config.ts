@@ -150,7 +150,7 @@ const config: Config = {
           title: '其他連結',
           items: [
             {
-              label: 'Blog',
+              label: '部落格',
               to: '/blog',
             },
             {
