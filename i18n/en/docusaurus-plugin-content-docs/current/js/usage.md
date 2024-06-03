@@ -68,7 +68,7 @@ import { ExpTechApi } from "@ExpTechTW/api-wrapper";
 
 const api = new ExpTechApi();
 
-// 驗證權杖資訊
+// Credentials
 const credentials = {
   email: "Email",
   password: "Password",
