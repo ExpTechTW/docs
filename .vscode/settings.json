@@ -1,0 +1,4 @@
+{
+  "markdown.preferredMdPathExtensionStyle": "removeExtension",
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
