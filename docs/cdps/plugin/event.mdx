@@ -8,13 +8,13 @@ sidebar_position: 2
 
 ## register_listener
 
-- 定義一個 Listener 後，向 事件管理器 註冊
+- 定義一個 Listener 後，向**事件管理器**註冊。
 
 #### <span style={{ color: 'red' }}>❗ 不推薦的做法</span>
 
 :::tip
 
-- 在 CDPS `>= 1.0.15` 後，有更好的方法 註冊事件 請看 [裝飾器](#event_listener)
+- 在 CDPS `>= 1.0.15` 後，有更好的方法**註冊事件**請看 [裝飾器](#event_listener)
 
 :::
 
@@ -36,7 +36,7 @@ event_manager.register_listener(onServerStartListener()) # 註冊 監聽器 到 
 
 ## event_listener
 
-- 使用 裝飾器 裝飾 函數，被裝飾的函數將會作為對應事件的 回調函數。
+- 使用**裝飾器**裝飾函數，被裝飾的函數將會作為對應事件的回調函數。
 - 傳入要監聽的事件
 
 ```py
