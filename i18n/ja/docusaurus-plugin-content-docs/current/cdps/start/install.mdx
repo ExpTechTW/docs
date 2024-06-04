@@ -1,0 +1,61 @@
+---
+sidebar_position: 2
+---
+
+# はじめに
+
+## インストール
+- PyPIを使用してCDPSをインストールします。
+
+| CDPS バージョン | Python 依存関係 |
+| --------------- | -------------- |
+| `>= 1.0.0`      | `>= 3.8`       |
+
+```bash
+pip install cdps
+```
+:::caution
+- Pythonの開発環境は `3.10.0` です。開発環境より低いバージョンでの実行は推奨されません。
+:::
+
+## 初期設定
+- `my_cdps` という名前のフォルダーを作成します。
+```bash
+mkdir my_cdps
+```
+- `my_cdphs` フォルダ内に進みます。
+```bash
+cd ./my_cdps
+```
+- 初期化して必要なファイルを生成します。
+```bash
+cdps init
+```
+:::caution
+- 次のようなメッセージが表示されるかもしれません：
+```bash
+'cdps' is not recognized as an internal or external command,
+operable program or batch file.
+```
+- これは環境変数が正しく設定されていないためです。
+- 設定(Windows) -> システム -> 情報 -> システム詳細設定 -> 環境変数 -> システム変数 -> 変数(Path)
+- 値の中には次の三行が含まれている必要があります（`{User}`はコンピュータのユーザー名に置き換え、`Python310`はインストールされているPythonのバージョンによって異なります）：
+```bash
+C:\Program Files\Python310\Scripts\
+C:\Program Files\Python310\
+C:\Users\{User}\AppData\Roaming\Python\Python310\Scripts\
+```
+:::
+:::note
+- 新しい環境変数を適用するために、ターミナルを再起動することを忘れないでください。
+:::
+- 実行します。
+```bash
+cdps
+```
+
+## アップデート
+- PyPIを使用してCDPSを更新します。
+```bash
+pip install --upgrade cdps
+```

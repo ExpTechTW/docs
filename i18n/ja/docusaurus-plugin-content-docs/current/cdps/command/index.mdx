@@ -1,0 +1,51 @@
+---
+sidebar_position: 3
+---
+
+# コマンド
+- CDPSは簡単なCLIツールを提供して、対応する操作を実行します。
+:::note
+- ソースコード以下のコマンドは、`cdps`を`python main.py`に置き換える必要があります。
+:::
+
+## CDPSのヘルプメッセージを表示
+- `-h` `--help`
+```bash
+cdps -h
+```
+:::note
+- 子コマンドのヘルプメッセージを見ることができます。
+- 例：`cdps pack -h`
+:::
+
+## CDPSのバージョンを表示
+- `-v` `--version`
+```bash
+cdps -v
+```
+
+## CDPSの初期化
+```bash
+cdps init
+```
+
+## CDPSの起動
+- `パラメータなし` `start`
+```bash
+cdps start
+```
+
+## デフォルト設定 (config.yml) を再生成
+```bash
+cdps gendefault
+```
+
+## パッケージング
+```bash
+cdps pack --name {フォルダ名}
+```
+
+## ホットリロード
+```bash
+cdps plugin reload {フォルダ名}
+```
