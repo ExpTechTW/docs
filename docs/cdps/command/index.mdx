@@ -3,49 +3,66 @@ sidebar_position: 3
 ---
 
 # 指令
+
 - CDPS 提供簡易的 CLI 工具 執行對應操作
+
 :::note
+
 - 下方指令 在 Source Code 下，需將 `cdps` 替換成 `python main.py`。
+
 :::
 
 ## 查看 CDPS 的幫助訊息
+
 - `-h` `--help`
+
 ```bash
 cdps -h
 ```
+
 :::note
+
 - 可以查看 子指令 幫助訊息
 - 範例 `cdps pack -h`
+
 :::
 
 ## 查看 CDPS 版本
+
 - `-v` `--version`
+
 ```bash
 cdps -v
 ```
 
 ## 初始化 CDPS
+
 ```bash
 cdps init
 ```
 
 ## 啟動 CDPS
+
 - `不帶參數` `start`
+
 ```bash
 cdps start
 ```
 
 ## 重新生成默認配置 (config.yml)
+
 ```bash
 cdps gendefault
 ```
 
 ## 打包
+
 ```bash
 cdps pack --name {資料夾名稱}
 ```
 
 ## 熱載入(Hot reload)
+
 ```bash
 cdps plugin reload {plugin名稱}
 ```
