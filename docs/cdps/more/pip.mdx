@@ -3,25 +3,35 @@ sidebar_position: 9
 ---
 
 # PyPI 依賴
-- 依賴的 PyPI 套件
+
+- 依賴的 PyPI 套件。
+
 :::note
-- 這是說明 PyPI依賴，如果要找 CDPS 擴充之間的依賴關係 [點擊這裡](./dependencies.mdx)。
+
+- 這是說明 PyPI 依賴，如果要找 CDPS 擴充之間的依賴關係 [點擊這裡](./dependencies)。
+
 :::
 
 ## 聲明依賴
+
 - 在 `cdps.json` 中 聲明
+
 ```json
 {
-    // ...
-    "pip_dependencies": {
-        "websocket-client": ">=1.8.0"                                      // 擴充所需的 CDPS 最低版本
-    },
-    // ...
+  // ...
+  "pip_dependencies": {
+    "websocket-client": ">=1.8.0" // 擴充所需的 CDPS 最低版本
+  }
+  // ...
 }
 ```
 
 ## 用途
-- 在 `pip_dependencies` 中 聲明 所需的 PyPI依賴，擴充管理器會檢查是否已安裝對應依賴。
+
+- 在 `pip_dependencies` 中**聲明**所需的 PyPI 依賴，擴充管理器會檢查是否已安裝對應依賴。
+
 :::tip
+
 - 擴充開發者，應加上此參數，避免使用者初次使用，因缺少依賴而崩潰。
+
 :::

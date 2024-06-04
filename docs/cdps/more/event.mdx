@@ -1,0 +1,44 @@
+---
+sidebar_position: 12
+---
+
+# 自定義事件註冊
+
+- 除了 CDPS 本身，**擴充**還可以分發自己的 事件。
+
+:::tip
+
+- **自定義事件**是擴充之間，傳遞訊息的一種方式。
+
+:::
+
+## 用法
+
+```py
+# color_log ( plugin ) 分發 Log 事件
+from cdps.plugin.events import Event            # 導入 Event 基類
+from cdps.plugin.manager import Manager         # 導入 擴充管理器
+
+class onLogEvent(Event):                        # 自定義事件
+    """ 當 輸出日誌 """
+
+    def __init__(self, log):
+        self.pid = log
+
+
+event_manager = Manager()                       # 獲取 擴充管理器 實例
+event_manager.call_event(onLogEvent("test"))    # 觸發 自定義事件
+```
+
+```py
+# discord (plugin) 獲取分發的 Log 事件 發送到 Discord
+from cdps.plugin.manager import Listener, event_listener
+from plugins.color_log.main import onLogEvent   # 導入上述 color_log 擴充 中的 onLogEvent 事件
+
+
+@event_listener(onLogEvent)                     # 裝飾器
+class onLogListener(Listener):
+
+    def on_event(self, event):
+        print("-> {}".format(event.log))
+```
