@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# 基本知識
-## 什麼是 CDPS 擴充?
-- CDPS 擴充 是位於 `./plugins` 底下以 `.cdps` 為副檔名的文件
+# 基礎知識
+## CDPS拡張機能とは？
+- CDPS 拡張子は`./plugins`ファイルにあるファイルで、拡張子は`.cdps`です。
 
-## 文件結構
-- `example.cdps` 改為 `example.zip` 後 解壓縮 文件結構應該如下方所示
-- [下載 example.cdps](https://github.com/ExpTechTW/CDPS-ExamplePlugin/releases)
+## ファイルの構造
+- `example.cdpsを`example.zip`に変更して解凍すると、以下のようなファイル構成になっているはずだ。
+- [ダウンロードexample.cdps](https://github.com/ExpTechTW/CDPS-ExamplePlugin/releases)
 ```
 example/
     main.py
@@ -16,36 +16,36 @@ example/
 ```
 
 ## main.py
-- 擴充 的 入口點
+- 機能拡張のための入口
 ```py
-from cdps.plugin.events import onServerStartEvent               # 導入 類(class)
-from cdps.plugin.manager import Listener, event_listener        # 導入 類(class)
+from cdps.plugin.events import onServerStartEvent               # インポートクラス（class）
+from cdps.plugin.manager import Listener, event_listener        # インポートクラス（class）
 
 
-@event_listener(onServerStartEvent)                             # 裝飾器
-class onServerStartListener(Listener):                          # 自定義 監聽器
+@event_listener(onServerStartEvent)                             # 装飾家（Decorator）
+class onServerStartListener(Listener):                          # カスタムイベントリスナ
 
-    def on_event(self, event):                                  # 監聽器 觸發
-        print("Hello World")                                    # 功能實作
+    def on_event(self, event):                                  # 觸發イベントリスナ
+        print("Hello World")                                    # ハンズオン
 ```
 
 ## cdps.json
-- 定義 擴充資訊 的文件
+- エクステンションに関する情報を定義した文書
 ```json
 {
-    "version": "1.0.0",                                         // 擴充版本
+    "version": "1.0.0",                                         // 拡張機能バージョン
     "description": {
-        "zh_tw": "CDPS 的 範例擴充"                              // 擴充說明
+        "zh_tw": "CDPS 的 範例擴充"                              // 拡張機能の説明
     },
     "author": [
-        "YuYu1015"                                              // 擴充作者
+        "YuYu1015"                                              // 拡張機能の著者
     ],
     "dependencies": {
-        "cdps": ">=1.0.18"                                      // 擴充所需的 CDPS 最低版本
+        "cdps": ">=1.0.18"                                      // 拡張機能に必要なCDPSの最小バージョン 
     },
     "resources": [
-        "AGPL-3.0"                                              // 擴充的開源協議
+        "AGPL-3.0"                                              // 拡張機能のためのオープンソースプロトコル
     ],
-    "link": "https://github.com/ExpTechTW/CDPS-ExamplePlugin"   // 擴充 的 GitHub Link
+    "link": "https://github.com/ExpTechTW/CDPS-ExamplePlugin"   // 拡張機能GitHubリンク
 }
 ```

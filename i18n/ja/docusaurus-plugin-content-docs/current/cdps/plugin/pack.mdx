@@ -2,22 +2,22 @@
 sidebar_position: 4
 ---
 
-# 封裝
-- 封裝 擴充 為 `.cdps` 檔案
+# パッケージング
+- `.cdps`ファイルへのパッケージング拡張
 
 ## 準備
-- 資料夾看起來應該像下方這樣
+- フォルダは以下のようになるはずだ
 ```
 example/
-    cdps.json   // 擴充基本資訊
-    main.py     // 入口點
+    cdps.json   // 拡張機能の基本情報
+    main.py     // 入口
 ```
 
-## 指令
-- 使用 `cdps pack --name example` 打包 **example** 資料夾為 **example.cdps** 檔案
+## 命令
+- `cdps pack --name example`を使用して、**example** フォルダーを**example.cdps** ファイルとしてパックします
 :::note
-- `--name` 後 帶上資料夾名稱
+- `--name` の後にフォルダー名を続ける。
 :::
 :::tip
-- Source Code 下 指令為 `python main.py pack --name example`
+- ソースコードで使用されている命令は`python main.py pack --name example`である。
 :::
