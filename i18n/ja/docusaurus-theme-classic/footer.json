@@ -25,7 +25,7 @@
   },
   "link.item.label.CDPS": {
     "message": "CDPS",
-    "description": "/docs/cdps/start/indexにリンクしているlabel=CDPSのフッターリンクのラベル"
+    "description": "/docs/cdps/start にリンクしているlabel=CDPSのフッターリンクのラベル"
   },
   "link.item.label.服務條款": {
     "message": "利用規約",
