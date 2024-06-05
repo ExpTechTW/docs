@@ -2,14 +2,14 @@
 sidebar_position: 3
 ---
 
-# 多執行緒
-- 在 擴充 中使用 threading
+# マルチスレッド
+- 擴充功能でマルチスレッドを使用する。
 
 ## task_run
-- 捕獲 Plugin Loader 傳入的 stop_event
-#### <span style={{ color: 'red' }}>❗不推薦的做法</span>
+- Plugin Loaderから渡されたstop_eventをキャッチする。
+#### <span style={{ color: 'red' }}>❗推奨されない</span>
 :::tip
-- 在 CDPS `>= 1.0.18` 後，有更好的方法 使用threading 請看 [裝飾器](#new_thread)。
+- `CDPS`>= 1.0.18`以降では、より良い方法があります。[デコレーター（decorator）](#new_thread)を参照して、threadingを使用してください。
 :::
 ```py
 import threading
@@ -35,9 +35,9 @@ def task_run(stop_event):
 ```
 
 ## new_thread
-- 使用 裝飾器 裝飾 函數，被裝飾的函數將會在 多執行緒 中 執行。
+- デコレーター（decorator）を使って関数をデコレートすると、デコレートされた関数は複数のスレッドで実行される。
 :::note
-- 需要呼叫一次函數。
+- 関数呼び出しが必要である。
 :::
 ```py
 from cdps.plugin.thread import new_thread

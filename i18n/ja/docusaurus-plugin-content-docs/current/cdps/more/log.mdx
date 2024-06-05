@@ -2,19 +2,19 @@
 sidebar_position: 10
 ---
 
-# 日誌紀錄
-- 輸出 日誌 到 控制台 並 紀錄到 文件 中。
+# ジャーナル記録
+- コンソールにログをエクスポートし、ファイルに記録する。
 
-## 用法
-- 獲取 log 實例
+## 使用
+- ログ取得例
 :::tip
-- Log 類 為 `單例` ，因此可以重複獲取，無需擔心重複。
+- ログクラス（class）はシングルインスタンスなので、重複を気にすることなく繰り返し取得できる。
 :::
 ```py
-from cdps.utils.logger import Log   # 導入 Log 類
-log = Log()                         # 獲取 log 實例
-log.logger.debug("除錯")
-log.logger.info("資訊")
+from cdps.utils.logger import Log   # 導入ログクラス（class）
+log = Log()                         # ログ取得例
+log.logger.debug("デバッグ")
+log.logger.info("インフォメーション")
 log.logger.warning("警告")
-log.logger.error("錯誤")
+log.logger.error("エラー")
 ```
