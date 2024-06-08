@@ -1,14 +1,30 @@
 {
   "version.label": {
     "message": "次のページ",
-    "description": "現在のバージョンのラベル"
+    "description": "The label for version current"
   },
   "sidebar.apiSidebar.category.地震": {
     "message": "地震",
-    "description": "サイドバーapiSidebarのカテゴリ地震のラベル"
+    "description": "The label for category 地震 in sidebar apiSidebar"
   },
   "sidebar.apiSidebar.category.氣象": {
     "message": "天気",
-    "description": "サイドバーapiSidebarのカテゴリ氣象のラベル"
+    "description": "The label for category 氣象 in sidebar apiSidebar"
+  },
+  "sidebar.cdpsSidebar.category.CDPS": {
+    "message": "CDPS",
+    "description": "The label for category CDPS in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.拡張機能": {
+    "message": "拡張機能",
+    "description": "The label for category 拡張機能 in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.拡張機能開発": {
+    "message": "拡張機能開発",
+    "description": "The label for category 拡張機能開発 in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.その他": {
+    "message": "その他",
+    "description": "The label for category その他 in sidebar cdpsSidebar"
   }
 }

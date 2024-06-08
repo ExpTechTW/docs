@@ -10,5 +10,21 @@
   "sidebar.apiSidebar.category.氣象": {
     "message": "Weather",
     "description": "The label for category 氣象 in sidebar apiSidebar"
+  },
+  "sidebar.cdpsSidebar.category.CDPS": {
+    "message": "CDPS",
+    "description": "The label for category CDPS in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.擴充開發": {
+    "message": "擴充開發",
+    "description": "The label for category 擴充開發 in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.擴充套件": {
+    "message": "擴充套件",
+    "description": "The label for category 擴充套件 in sidebar cdpsSidebar"
+  },
+  "sidebar.cdpsSidebar.category.雜項": {
+    "message": "雜項",
+    "description": "The label for category 雜項 in sidebar cdpsSidebar"
   }
 }

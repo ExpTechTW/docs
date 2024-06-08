@@ -285,5 +285,9 @@
   "theme.unlistedContent.message": {
     "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
     "description": "The unlisted content banner message"
+  },
+  "component.githubRepositoryLink.sourceCode": {
+    "message": "Source Code",
+    "description": "The label of source code link"
   }
 }

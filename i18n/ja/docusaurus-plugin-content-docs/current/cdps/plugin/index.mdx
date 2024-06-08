@@ -7,37 +7,51 @@ sidebar_position: 5
 - 希望する機能のすべてが開発されているわけではないので、もし挑戦する能力があるのなら、自分でやってみよう！
 
 ## 準備
+
 - - [x] Python ( 推奨 `>= 3.10.0` )
-- - [x] VSCode（または他のIDE）
+- - [x] VSCode（または他の IDE）
 - - [x] Git
-- - [ ] GitHubデスクトップ（可選） 
+- - [ ] GitHub デスクトップ（可選）
 
 ## 仮想環境
-- 拡張機能の開発には、Python独自の仮想環境機能を使用することをお勧めします。
-:::note
-- Source Codeを使用してCDPSの前提条件を強制する。
-:::
-#### 仮想環境の構築 
+
+- 拡張機能の開発には、Python 独自の仮想環境機能を使用することをお勧めします。
+  :::note
+- Source Code を使用して CDPS の前提条件を強制する。
+  :::
+
+#### 仮想環境の構築
+
 ```bash
 python -m venv dev
 ```
+
 #### 仮想環境の場所を入力
+
 ```bash
 cd ./dev/Scripts
 ```
+
 #### 仮想環境の起動
+
 ```bash
 activate.bat
 ```
+
 #### ルートカタログに戻る
+
 ```bash
 cd ../../
 ```
+
 #### インストール関連の依存関係
+
 ```bash
 pip install -r requirements.txt
 ```
+
 #### 実行
+
 ```
 python main.py
 ```

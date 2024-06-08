@@ -1,66 +1,66 @@
 {
   "link.title.技術文件": {
     "message": "ドキュメント",
-    "description": "フッターのリンクカラムのタイトルにtitle=技術文件 を付けたもの"
+    "description": "The title of the footer links column with title=技術文件 in the footer"
   },
   "link.title.ExpTech Studio": {
     "message": "ExpTech Studio",
-    "description": "フッターのリンクカラムのタイトルにtitle=ExpTech Studio を付けたもの"
+    "description": "The title of the footer links column with title=ExpTech Studio in the footer"
   },
   "link.title.社群連結": {
     "message": "ソーシャル",
-    "description": "フッターのリンクカラムのタイトルにtitle=社群連結 を付けたもの"
+    "description": "The title of the footer links column with title=社群連結 in the footer"
   },
   "link.title.其他連結": {
     "message": "その他",
-    "description": "フッターのリンクカラムのタイトルにtitle=其他連結 を付けたもの"
+    "description": "The title of the footer links column with title=其他連結 in the footer"
   },
   "link.item.label.API": {
     "message": "API",
-    "description": "docs/api/earthquake/reportにリンクしているlabel=APIのフッターリンクのラベル"
+    "description": "The label of footer link with label=API linking to /docs/api/earthquake/report"
   },
   "link.item.label.API Wrapper": {
     "message": "API Wrapper",
-    "description": "/docs/js/installationにリンクしているlabel=API Wrapperのフッターリンクのラベル"
+    "description": "The label of footer link with label=API Wrapper linking to /docs/js/installation"
   },
   "link.item.label.CDPS": {
     "message": "CDPS",
-    "description": "/docs/cdps/start にリンクしているlabel=CDPSのフッターリンクのラベル"
+    "description": "The label of footer link with label=CDPS linking to /docs/cdps/start/"
   },
   "link.item.label.服務條款": {
     "message": "利用規約",
-    "description": "https://exptech.com.tw/tosにリンクしているlabel=服務條款のフッターリンクのラベル"
+    "description": "The label of footer link with label=服務條款 linking to https://exptech.com.tw/tos"
   },
   "link.item.label.隱私權聲明": {
     "message": "プライバシーポリシー",
-    "description": "https://raw.githubusercontent.com/ExpTechTW/TREM/Release/terms/privacy_policyにリンクしているlabel=隱私權聲明のフッターリンクのラベル"
+    "description": "The label of footer link with label=隱私權聲明 linking to https://raw.githubusercontent.com/ExpTechTW/TREM/Release/terms/privacy_policy"
   },
   "link.item.label.Youtube": {
     "message": "Youtube",
-    "description": "https://www.youtube.com/@exptechtwにリンクしているlabel=Youtubeのフッターリンクのラベル"
+    "description": "The label of footer link with label=Youtube linking to https://www.youtube.com/@exptechtw"
   },
   "link.item.label.Instagram": {
     "message": "Instagram",
-    "description": "https://www.instagram.com/exptech.twにリンクしているlabel=Instagramのフッターリンクのラベル"
+    "description": "The label of footer link with label=Instagram linking to https://www.instagram.com/exptech.tw"
   },
   "link.item.label.Discord": {
     "message": "Discord",
-    "description": "https://discord.com/invite/exptech-studioにリンクしているlabel=Discordのフッターリンクのラベル"
-  },
-  "link.item.label.Blog": {
-    "message": "ブログ",
-    "description": "/blogにリンクしているlabel=Blogのフッターリンクのラベル"
+    "description": "The label of footer link with label=Discord linking to https://discord.com/invite/exptech-studio"
   },
   "link.item.label.GitHub": {
     "message": "GitHub",
-    "description": "https://github.com/ExpTechTWにリンクしているlabel=GitHubのフッターリンクのラベル"
+    "description": "The label of footer link with label=GitHub linking to https://github.com/ExpTechTW"
   },
   "link.item.label.Ko-fi": {
     "message": "Ko-fi",
-    "description": "https://ko-fi.com/exptechにリンクしているlabel=Ko-fiのフッターリンクのラベル"
+    "description": "The label of footer link with label=Ko-fi linking to https://ko-fi.com/exptech"
   },
   "copyright": {
     "message": "Copyright © 2024 ExpTech Studio. Built with Docusaurus.",
-    "description": "フッターのコピーライト"
+    "description": "The footer copyright"
+  },
+  "link.item.label.部落格": {
+    "message": "ブログ",
+    "description": "The label of footer link with label=部落格 linking to /blog"
   }
 }
