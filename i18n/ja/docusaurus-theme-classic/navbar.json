@@ -1,26 +1,26 @@
 {
   "title": {
     "message": "ExpTechドキュメント",
-    "description": "ナビバーのタイトル"
+    "description": "The title in the navbar"
   },
   "logo.alt": {
     "message": "ExpTech Logo",
-    "description": "ナバーLogoのaltテキスト"
+    "description": "The alt text of navbar logo"
   },
   "item.label.API": {
     "message": "API",
-    "description": "ラベルAPI付きナバーアイテム"
+    "description": "Navbar item with label API"
   },
   "item.label.API Wrapper": {
     "message": "API Wrapper",
-    "description": "ラベルAPI Wrapper付きナバーアイテム"
+    "description": "Navbar item with label API Wrapper"
   },
   "item.label.CDPS": {
     "message": "CDPS",
-    "description": "ラベルCDPS付きナバーアイテム"
+    "description": "Navbar item with label CDPS"
   },
   "item.label.GitHub": {
     "message": "GitHub",
-    "description": "ラベルGitHub付きナバーアイテム"
+    "description": "Navbar item with label GitHub"
   }
 }
