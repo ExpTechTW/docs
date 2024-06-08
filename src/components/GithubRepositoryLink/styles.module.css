@@ -15,10 +15,10 @@
 .icon {
   height: 24px;
   width: 24px;
-  fill: var(--ifm-color-secondary-darker);
+  fill: var(--ifm-font-color-base);
 }
 
 .name {
   padding: 0 4px;
-  color: var(--ifm-color-secondary);
+  color: var(--ifm-font-color-base);
 }
