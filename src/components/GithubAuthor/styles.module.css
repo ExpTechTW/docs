@@ -1,0 +1,17 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px;
+}
+
+.avatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 28px;
+}
+
+.name {
+  font-weight: bold;
+  padding: 0 4px;
+}
