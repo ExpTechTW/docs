@@ -3,20 +3,29 @@ sidebar_position: 4
 ---
 
 # Inject 注入
-- サーバが起動すると`onServerStartEvent`がトリガーされる。
-- `onServerStartEvent`の前に何かをしたい拡張機能がある場合（通常、自作の拡張機能、例えば`ジャーナル拡張機能`など）。
-- そこで登場するのが`Inject 注入`関数である。
-- `onServerStartEvent`の前に実行される新しい`onServerStartEventForExample`を注入する。
+
+サーバが起動すると`onServerStartEvent`がトリガーされる。
+`onServerStartEvent`の前に何かをしたい拡張機能がある場合（通常、自作の拡張機能、例えば`ジャーナル拡張機能`など）。
+そこで登場するのが`Inject 注入`関数である。
+`onServerStartEvent`の前に実行される新しい`onServerStartEventForExample`を注入する。
+
 :::danger
-- `Inject 注入`の機能はネイティブのメソッドを壊してしまう可能性があるため、使用には注意が必要である。
-- `Inject 注入`を使用する拡張機能については、READMEにその旨を記述し、ユーザーに注意を促すべきである。
+
+`Inject 注入`の機能はネイティブのメソッドを壊してしまう可能性があるため、使用には注意が必要である。
+`Inject 注入`を使用する拡張機能については、README にその旨を記述し、ユーザーに注意を促すべきである。
+
 :::
+
 :::note
-- `Inject 注入`が使われたケースについては、[colour_log`](https://github.com/ExpTechTW/CDPS-color_log)を参照。
+
+`Inject 注入`が使われたケースについては、[colour_log`](https://github.com/ExpTechTW/CDPS-color_log)を参照。
+
 :::
 
 ## プリミティブクラス（class）、メソッド（function）
+
 - `cdps/plugin/events.py`
+
 ```py
 class onServerStartEvent(Event):
     """ サーバー起動時 """
@@ -24,12 +33,16 @@ class onServerStartEvent(Event):
     def __init__(self, pid):
         self.pid = pid
 ```
+
 - `cdps/cdps_server.py`
+
 ```py
 def on_start(self):
     self.event_manager.call_event(onServerStartEvent("start"))
 ```
+
 ## 新しいクラスを定義する
+
 ```py
 from cdps.plugin.events import Event
 
@@ -38,22 +51,29 @@ class onServerStartEventForExample(Event):
     def __init__(self, pid):
         self.pid = pid
 ```
+
 ## オリジナルの方法論の保持
+
 ```py
 original_on_start = cdps.cdps_server.CDPS.on_start
 ```
+
 ## 新しい定義方法
+
 ```py
 def _new_on_start(self):
     self.event_manager.call_event(onServerStartEventForExample("example")) # 次の行を追加した
     original_on_start(self)                                                # オリジナルメソッドの呼び出し
 ```
+
 ## 注入
+
 ```py
 cdps.cdps_server.CDPS.on_start = _new_on_start
 ```
 
 ## 完成すると、こんな感じになる
+
 ```py
 from cdps.plugin.manager import Manager , Listener
 from cdps.plugin.events import Event

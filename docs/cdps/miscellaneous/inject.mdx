@@ -4,55 +4,57 @@ sidebar_position: 4
 
 # Inject 注入
 
-- Server 啟動時會 觸發 `onServerStartEvent`
-- 如果我的 擴充 想在 `onServerStartEvent` 前做些什麼 ( 通常是自製的 `日誌擴充` 等 需要在其他擴充前 初始化完成 )
-- 這時 `Inject 注入` 就登場了
-- 注入新的 `onServerStartEventForExample` 讓其在 `onServerStartEvent` 前 先被執行
+在伺服器啟動時，會觸發 `onServerStartEvent` 事件。如果您希望在 `onServerStartEvent` 事件前進行某些操作（例如在其他擴充功能初始化之前完成自製的 `日誌擴充`），這時您可以使用 `Inject 注入`。
+
+通過注入一個新的事件 `onServerStartEventForExample`，您可以確保它在 `onServerStartEvent` 事件之前執行。
 
 :::danger
 
-- 應謹慎使用 `Inject 注入` ，因其會破壞原生方法。
-- 使用 `Inject 注入` 的擴充，應在 README 中註明，提醒使用者。
+請謹慎使用 `Inject 注入`，因為它會修改原生方法。使用 `Inject 注入` 的擴充功能應在 README 中註明，以提醒使用者。
 
 :::
 
 :::note
 
-- 使用了 `Inject 注入` 的案例 [`color_log`](https://github.com/ExpTechTW/CDPS-color_log)。
+已經使用 `Inject 注入` 的案例：[color_log](https://github.com/ExpTechTW/CDPS-color_log)
 
 :::
 
-## 原始 類(class)、方法(function)
+## 原始類和方法
+
+以下是原始類和方法的定義：
 
 - `cdps/plugin/events.py`
 
-```py
+```python
 class onServerStartEvent(Event):
-    """ 當 伺服器 啟動 """
-
     def __init__(self, pid):
         self.pid = pid
 ```
 
 - `cdps/cdps_server.py`
 
-```py
+```python
 def on_start(self):
     self.event_manager.call_event(onServerStartEvent("start"))
 ```
 
-## 定義新的類
+## 定義新類別
 
-```py
+定義新的事件類別，用在 `onServerStartEvent` 之前執行：
+
+```python
 from cdps.plugin.events import Event
 
 class onServerStartEventForExample(Event):
-    """ 當 伺服器 啟動 """
+    # 當伺服器啟動
     def __init__(self, pid):
         self.pid = pid
 ```
 
 ## 保留原始方法
+
+保留原始的 `on_start` 方法，以便在修改後依然能夠調用它：
 
 ```py
 original_on_start = cdps.cdps_server.CDPS.on_start
@@ -60,27 +62,35 @@ original_on_start = cdps.cdps_server.CDPS.on_start
 
 ## 定義新方法
 
+定義新的 `on_start` 方法，先觸發 `onServerStartEventForExample`，然後調用原始方法：
+
 ```py
 def _new_on_start(self):
-    self.event_manager.call_event(onServerStartEventForExample("example")) # 多了這行
-    original_on_start(self)                                                # 呼叫原始方法
+    # 新增此行
+    self.event_manager.call_event(onServerStartEventForExample("example"))
+
+    # 調用原始方法
+    original_on_start(self)
 ```
 
 ## 注入
+
+將新方法注入到 CDPS 類的 `on_start` 方法中：
 
 ```py
 cdps.cdps_server.CDPS.on_start = _new_on_start
 ```
 
-## 完成看起來像這樣
+## 完整程式碼
+
+以下是完整的程式碼，包含事件管理和監聽器註冊：
 
 ```py
-from cdps.plugin.manager import Manager , Listener
+from cdps.plugin.manager import Manager, Listener
 from cdps.plugin.events import Event
 import cdps.cdps_server
 
 class onServerStartEventForExampleEvent(Event):
-    """ 當 伺服器 啟動 """
     def __init__(self, pid):
         self.pid = pid
 
@@ -99,5 +109,5 @@ class onServerStartEventForExampleListener(Listener):
         print(event.pid)
 
 event_manager = Manager()
-event_manager.register_listener(onServerStartEventForExampleListener())    # 別忘了監聽事件
+event_manager.register_listener(onServerStartEventForExampleListener())  # 註冊事件監聽器
 ```

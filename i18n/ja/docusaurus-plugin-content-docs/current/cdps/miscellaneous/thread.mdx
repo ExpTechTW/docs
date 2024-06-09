@@ -3,14 +3,21 @@ sidebar_position: 3
 ---
 
 # マルチスレッド
-- 擴充功能でマルチスレッドを使用する。
+
+擴充功能でマルチスレッドを使用する。
 
 ## task_run
-- Plugin Loaderから渡されたstop_eventをキャッチする。
-#### <span style={{ color: 'red' }}>❗推奨されない</span>
+
+Plugin Loader から渡された stop_event をキャッチする。
+
+<span style={{ color: "red" }}>❗ 推奨されていません</span>
+
 :::tip
-- `CDPS`>= 1.0.18`以降では、より良い方法があります。[デコレーター（decorator）](#new_thread)を参照して、threadingを使用してください。
+
+`CDPS`>= 1.0.18`以降では、より良い方法があります。[デコレーター（decorator）](#new_thread)を参照して、threading を使用してください。
+
 :::
+
 ```py
 import threading
 import time
@@ -35,10 +42,15 @@ def task_run(stop_event):
 ```
 
 ## new_thread
+
 - デコレーター（decorator）を使って関数をデコレートすると、デコレートされた関数は複数のスレッドで実行される。
+
 :::note
-- 関数呼び出しが必要である。
+
+関数呼び出しが必要である。
+
 :::
+
 ```py
 from cdps.plugin.thread import new_thread
 import time

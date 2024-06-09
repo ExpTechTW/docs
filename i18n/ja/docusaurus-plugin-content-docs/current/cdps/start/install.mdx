@@ -5,57 +5,82 @@ sidebar_position: 2
 # 開始
 
 ## インストール
-- PyPIを使ってCDPSをインストールしてください。
 
-| CDPSバージョン | Python依存関係 |
-| --------------- | -------------- |
-| `>= 1.0.0`      | `>= 3.8`       |
+- PyPI を使って CDPS をインストールしてください。
+
+| CDPS バージョン | Python 依存関係 |
+| --------------- | --------------- |
+| `>= 1.0.0`      | `>= 3.8`        |
 
 ```bash
 pip install cdps
 ```
+
 :::caution
-- Pythonの開発環境は`3.10.0`であり、それ以下のバージョンでPythonを実行することは推奨されない。
+
+Python の開発環境は`3.10.0`であり、それ以下のバージョンで Python を実行することは推奨されていません。
+
 :::
 
 ## 初期化
-- `my_cdps`というフォルダを作成する
-```bash
-mkdir my_cdps
-```
-- `my_cdps`フォルダに移動する。
-```bash
-cd ./my_cdps
-```
-- 初期化 必要なファイルの生成
-```bash
-cdps init
-```
+
+1. `my_cdps`というフォルダを作成する
+
+   ```bash
+   mkdir my_cdps
+   ```
+
+2. `my_cdps`フォルダに移動する。
+
+   ```bash
+   cd ./my_cdps
+   ```
+
+3. 初期化 必要なファイルの生成
+
+   ```bash
+   cdps init
+   ```
+
 :::caution
-- 次のような警告が表示されることがある：
-```bash
+
+次のような警告が表示されることがある：
+
+```
 'cdps' is not recognized as an internal or external command,
 operable program or batch file.
 ```
-- このエラーの原因は、環境変数が正しく設定されていないことである。
-- 「設定（Windows）」→「システム」→「情報」→「システム詳細設定」→「環境変数」→「システム変数」→「変数（パス）」。
-- 以下の3行をvalueに入れ、( `{User}`をコンピュータのユーザー名に置き換える。`Python310`は、インストールされているPythonのバージョンによって異なる)：
-```bash
+
+このエラーの原因は、環境変数が正しく設定されていないことである。
+
+「設定（Windows）」→「システム」→「情報」→「システム詳細設定」→「環境変数」→「システム変数」→「変数（パス）」。
+
+以下の 3 行を value に入れ、( `{User}`をコンピュータのユーザー名に置き換える。`Python310`は、インストールされている Python のバージョンによって異なる)：
+
+```
 C:\Program Files\Python310\Scripts\
 C:\Program Files\Python310\
 C:\Users\{User}\AppData\Roaming\Python\Python310\Scripts\
 ```
+
 :::
+
 :::note
-- 新しい`環境変数`が適用されるように、ターミナルを開き直すことをお忘れなく。
+
+新しい`環境変数`が適用されるように、ターミナルを開き直すことをお忘れなく。
+
 :::
-- 実行
-```bash
-cdps
-```
+
+4. 実行
+
+   ```bash
+   cdps
+   ```
 
 ## 更新
-- PyPIを使ってCDPSを更新してください。
+
+PyPI を使って CDPS を更新してください。
+
 ```bash
 pip install --upgrade cdps
 ```

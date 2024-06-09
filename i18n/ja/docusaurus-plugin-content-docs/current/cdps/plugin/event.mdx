@@ -3,39 +3,55 @@ sidebar_position: 2
 ---
 
 # 事件
+
 イベントが発生したら、それに対応する処理を行う
 
 ## register_listener
-- イベントリスナを定義したら、イベントマネージャーに登録する。
-#### <span style={{ color: 'red' }}>❗推奨されない</span>
+
+イベントリスナを定義したら、イベントマネージャーに登録する。
+
+#### <span style={{ color: 'red' }}>❗ 推奨されていません</span>
+
 :::tip
-- CDPS `>= 1.0.15` 以降では、イベントを登録するため（註冊事件）のより良い方法があります。
+
+CDPS `>= 1.0.15` 以降では、イベントを登録するため（註冊事件）のより良い方法があります。
+
 :::
+
 ```py
-from cdps.plugin.manager import Listener, Manager        # イベントマネージャーとイベントリスナのインポート
-from cdps.plugin.events import onServerStartEvent        # サーバー起動イベントのインポート
+# イベントマネージャーとイベントリスナのインポート
+from cdps.plugin.manager import Listener, Manager
 
+# サーバー起動イベントのインポート
+from cdps.plugin.events import onServerStartEvent
 
-class onServerStartListener(Listener):                   # イベントリスナの定義
-    event = onServerStartEvent                           # イベントリスナのイベントを定義する
+# イベントリスナの定義
+class onServerStartListener(Listener):
+    # イベントリスナのイベントを定義する
+    event = onServerStartEvent
 
-    def on_event(self, event):                           # ハンズオン
+    # ハンズオン
+    def on_event(self, event):
         print("Hello World")
 
+# キャッチアップイベントマネージャー 実践例
+event_manager = Manager()
 
-event_manager = Manager()                                # キャッチアップイベントマネージャー 実践例
-event_manager.register_listener(onServerStartListener()) # イベントリスナをイベントマネージャーに登録する
+# イベントリスナをイベントマネージャーに登録する
+event_manager.register_listener(onServerStartListener())
 ```
 
 ## event_listener
-- 装飾家（Decorator）を使用して関数をデコレートすると、デコレートされた関数が対応するイベントのコールバック関数として使用されます。
-- リスナすべきイベントを渡す
+
+装飾家（Decorator）を使用して関数をデコレートすると、デコレートされた関数が対応するイベントのコールバック関数として使用されます。
+リスナすべきイベントを渡す
+
 ```py
 from cdps.plugin.events import onServerStartEvent
 from cdps.plugin.manager import Listener, event_listener
 
-
-@event_listener(onServerStartEvent)                      # 装飾家（Decorator）
+# 装飾家（Decorator）
+@event_listener(onServerStartEvent)
 class onServerStartListener(Listener):
 
     def on_event(self, event):

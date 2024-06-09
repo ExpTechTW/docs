@@ -3,16 +3,25 @@ sidebar_position: 10
 ---
 
 # ジャーナル記録
-- コンソールにログをエクスポートし、ファイルに記録する。
+
+コンソールにログをエクスポートし、ファイルに記録する。
 
 ## 使用
-- ログ取得例
+
+ログ取得例
+
 :::tip
-- ログクラス（class）はシングルインスタンスなので、重複を気にすることなく繰り返し取得できる。
+
+ログクラス（class）はシングルインスタンスなので、重複を気にすることなく繰り返し取得できる。
+
 :::
+
 ```py
-from cdps.utils.logger import Log   # 導入ログクラス（class）
-log = Log()                         # ログ取得例
+# 導入ログクラス（class）
+from cdps.utils.logger import Log
+
+# ログ取得例
+log = Log()
 log.logger.debug("デバッグ")
 log.logger.info("インフォメーション")
 log.logger.warning("警告")

@@ -2,16 +2,22 @@
 sidebar_position: 2
 ---
 
-# 設定
-- CDPSサーバーのカスタマイズ。
+# コンフィグ
 
-## 設定ファイル
-- `./config.yml`
+CDPS サーバーのカスタマイズ。
+
+## コンフィグファイル
+
+`./config.yml`
+
 ```yml
-version: 1           # configバージョン
+# コンフィグファイルのバージョン
+version: 1
 
-# "DEBUG" , "INFO" , "WARN" , "ERROR"
-log_level: "DEBUG"   # ログレベル
+# ログのレベル
+# 有効な値は："DEBUG"、"INFO"、"WARN"、または"ERROR"
+log_level: "DEBUG"
 
-log_save_days: 7     # ログの保存期間（日数）
+# ログの保存期間（日数）
+log_save_days: 7
 ```
