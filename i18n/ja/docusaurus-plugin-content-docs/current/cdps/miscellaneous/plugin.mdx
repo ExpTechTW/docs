@@ -3,12 +3,20 @@ sidebar_position: 11
 ---
 
 # 拡張をインポートするための関数
-- 特定の拡張機能の関数をインポートする。
+
+特定の拡張機能の関数をインポートする。
+
 :::tip
-- から始まる絶対パスを使用する。`/plugins`から始まる絶対パスを使用します。
+
+から始まる絶対パスを使用する。`/plugins`から始まる絶対パスを使用します。
+
 :::
+
 ```py
 # main.py (report plugin)
-from plugins.report.src.events import onReport      # 独自の関数をインポートする
-from plugins.discord_webhook import send_webhook    # 他の拡張機能のインポート
+# 独自の関数をインポートする
+from plugins.report.src.events import onReport
+
+# 他の拡張機能のインポート
+from plugins.discord_webhook import send_webhook
 ```

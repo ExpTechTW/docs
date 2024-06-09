@@ -4,21 +4,24 @@ sidebar_position: 10
 
 # 日誌紀錄
 
-- 輸出**日誌**到**控制台**並紀錄到文件中。
+輸出**日誌**到**控制台**並紀錄到文件中。
 
 ## 用法
 
-- 獲取 log 實例
+獲取 log 實例
 
 :::tip
 
-- Log 類為 `單例` ，因此可以重複獲取，無需擔心重複。
+Log 類為 `單例` ，因此可以重複獲取，無需擔心重複。
 
 :::
 
 ```py
-from cdps.utils.logger import Log   # 導入 Log 類
-log = Log()                         # 獲取 log 實例
+# 導入 Log 類
+from cdps.utils.logger import Log
+
+# 獲取 log 實例
+log = Log()
 log.logger.debug("除錯")
 log.logger.info("資訊")
 log.logger.warning("警告")

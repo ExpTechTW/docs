@@ -2,19 +2,22 @@
 sidebar_position: 2
 ---
 
-# 配置
+# 設定
 
-- 自定義你的 CDPS 伺服器。
+自定義你的 CDPS 伺服器。
 
-## 配置檔
+## 設定檔
 
-- `./config.yml`
+`./config.yml`
 
 ```yml
-version: 1 # config 版本號
+# 設定檔版本號
+version: 1
 
-# "DEBUG" , "INFO" , "WARN" or "ERROR"
-log_level: "DEBUG" # 日誌紀錄等級
+# 日誌紀錄等級
+# 可用的值："DEBUG"、"INFO"、"WARN" 或 "ERROR"
+log_level: "DEBUG"
 
-log_save_days: 7 # 日誌保留天數
+# 日誌保留天數
+log_save_days: 7
 ```

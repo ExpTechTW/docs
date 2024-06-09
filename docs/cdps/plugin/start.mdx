@@ -6,11 +6,11 @@ sidebar_position: 1
 
 ## 什麼是 CDPS 擴充?
 
-- CDPS 擴充 是位於 `./plugins` 底下以 `.cdps` 為副檔名的文件
+CDPS 擴充是位於 `./plugins` 底下以 `.cdps` 為副檔名的文件
 
 ## 文件結構
 
-- `example.cdps` 改為 `example.zip` 後 解壓縮 文件結構應該如下方所示
+- `example.cdps` 改為 `example.zip` 後解壓縮文件結構應該如下方所示
 - [下載 example.cdps](https://github.com/ExpTechTW/CDPS-ExamplePlugin/releases)
 
 ```
@@ -21,7 +21,7 @@ example/
 
 ## main.py
 
-- 擴充 的 入口點
+擴充套件的入口點
 
 ```py
 from cdps.plugin.events import onServerStartEvent               # 導入 類(class)
@@ -37,7 +37,7 @@ class onServerStartListener(Listener):                          # 自定義 監�
 
 ## cdps.json
 
-- 定義 擴充資訊 的文件
+定義擴充資訊的文件
 
 ```json
 {

@@ -5,7 +5,9 @@ sidebar_position: 3
 # ファイルリーディング
 
 ## エクステンションの設定を読む
-- ユーザー定義プロファイルの拡張機能
+
+ユーザー定義プロファイルの拡張機能
+
 ```py
 with open("./config/{拡張機能の名前}.json", 'r', encoding='utf-8') as file:
      content = file.read()
@@ -13,7 +15,9 @@ with open("./config/{拡張機能の名前}.json", 'r', encoding='utf-8') as fil
 ```
 
 ## 拡張機能でファイルを読み込む
-- は拡張機能とともにパッケージ化され、変更のない文書に使用される
+
+は拡張機能とともにパッケージ化され、変更のない文書に使用される
+
 ```py
 with open("./plugins/{拡張機能の名前}/test.txt", 'r', encoding='utf-8') as file:
      content = file.read()
