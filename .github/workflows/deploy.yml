@@ -27,7 +27,7 @@ jobs:
           name: docswebsite
           path: /tmp/docswebsite.tar
   use:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build
     steps:
       - name: Download artifact
