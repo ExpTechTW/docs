@@ -28,14 +28,14 @@ jobs:
         with:
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: images.exptech.dev/exptech-web:latest
+          tags: images.exptech.dev/exptech-docs:latest
   use:
     runs-on: self-hosted
     needs: docker
     steps:
       - name: Load image
         run: |
-          docker pull images.exptech.dev/exptech-web
+          docker pull images.exptech.dev/exptech-docs
           docker image ls -a
           cd /home/whes1015
           docker compose up -d
