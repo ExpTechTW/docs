@@ -1,16 +1,29 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+yuyu1015:
+  label: YuYu1015
+  permalink: /yuyu1015
+  description: YuYu1015
+
+yoyo0901:
+  label: Yoyo0901
+  permalink: /yoyo0901
+  description: Yoyo0901
+
+cstrikeasia:
+  label: Miyashooooo
+  permalink: /cstrikeasia
+  description: Miyashooooo
+
+timyaya8732:
+  label: Timyaya8732
+  permalink: /timyaya8732
+  description: Timyaya8732
+
+trem_lite:
+  label: TREM Lite
+  permalink: /trem_lite
+  description: trem_lite
+
+tremv:
+  label: TREMV
+  permalink: /tremv
+  description: tremv
