@@ -3,8 +3,6 @@ name: "deploy"
 on:
   push:
     branches: main
-  pull_request:
-    branches: "**"
 
 jobs:
   docker:
@@ -25,6 +23,8 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v6
+        env:
+          DOCKER_BUILD_NO_SUMMARY: true
         with:
           platforms: linux/amd64,linux/arm64
           push: true
