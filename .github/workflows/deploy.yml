@@ -40,3 +40,4 @@ jobs:
           cd /home/whes1015
           docker compose up -d
           docker image rm $(docker images -f "dangling=true" -q)
+          docker image ls -a
