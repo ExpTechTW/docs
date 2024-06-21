@@ -1,0 +1,87 @@
+---
+title: TREM Lite 2.0.0-pre1 更新日誌
+authors: [cstrikeasia, yuyu1015, kamiya10]
+tags: [trem_lite]
+---
+
+import BlogMetaBar from "@site/src/components/BlogMetaBar";
+
+:::caution
+
+此版本為預覽版本，眾多功能尚未實裝（例如：登入功能、重設、所在地、即時測站、預警條件、預警來源、TREM EEW、其他功能、顯示視窗、地圖顯示效果、地圖自動縮放、顯示斷層...等）。
+
+:::
+
+## 🌟 新增
+
+- 設定頁面 UI
+- 設定頁面一些選項
+- 設定頁面所在地、預警條件、即時測站、地圖顯示效果下拉選單 (僅 UI ，功能尚未實裝)
+- 設定頁面登入、登出功能 (僅 UI ，功能尚未實裝)
+- 設定頁面透明度 Slider Bar
+- 程式版本檢查
+- 配置設定
+- Nav Bar 按鈕
+- TOS
+
+- 地震報告列表
+- 海嘯報告列表 (僅 UI ，功能尚未實裝)
+- 可折疊報告功能
+- 報告框重新設計
+- 報告交叉顯示
+- 全部震度顯示
+- NSSPE
+- 地震區域
+- EEW UI
+- 捲軸設定
+
+- 日誌功能
+- 語音播報功能
+- ElementBuilder 元素建構器
+- WebSocket 支援
+- 延遲加載
+- 支援 TTF 字體
+
+## 🔌 最佳化
+
+- 震度框
+- 刪除未使用的字體
+- 使用 woff2 字體格式
+- index.css 中的資訊框和字體
+- 首頁報告列表性能
+- 更新依賴
+- 代碼簡化
+- 音效
+- 測站資料請求
+- API 重試超時
+- API WebSocket 重試連接
+- 調整 API 請求頻率
+- 首頁報告列表 API
+- 將 WebSocket 合併到 API 中
+
+## 🐞 修正
+
+- 崩潰問題
+- API 修復
+- API require 路徑
+- 語音檔案重命名
+- 語音播報
+- 音效設定
+- utils 中 sampleArray 的索引超出範圍問題
+- Nav Bar EEW 警告邊框
+- Nav Bar 圖標
+- 震度字體大小
+- 地震區域字符串
+- 縮放調整
+- 地圖顯示
+- 報告列表縣市條顏色
+- 報告列表 RWD、時間格式、透明度
+- EEW 隱藏地震報告，顯示即時震度及右上方地震速報
+- EEW 深度
+- EEW 地圖聚焦
+
+## 🛠️ 貢獻者
+
+<BlogMetaBar author="cstrikeasia" />
+<BlogMetaBar author="whes1015" />
+<BlogMetaBar author="kamiya10" />
