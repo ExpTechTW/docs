@@ -127,6 +127,10 @@ const config: Config = {
               label: '隱私權聲明',
               href: 'https://raw.githubusercontent.com/ExpTechTW/TREM/Release/terms/privacy_policy',
             },
+            {
+              label: '狀態監測',
+              href: 'https://status.exptech.dev',
+            },
           ],
         },
         {

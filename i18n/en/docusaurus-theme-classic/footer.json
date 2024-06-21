@@ -35,6 +35,10 @@
     "message": "Privacy Policy",
     "description": "The label of footer link with label=隱私權聲明 linking to https://raw.githubusercontent.com/ExpTechTW/TREM/Release/terms/privacy_policy"
   },
+  "link.item.label.狀態監測": {
+    "message": "ExpTech Status",
+    "description": "The label of footer link with label=狀態監測 linking to https://status.exptech.dev"
+  },
   "link.item.label.Youtube": {
     "message": "Youtube",
     "description": "The label of footer link with label=Youtube linking to https://www.youtube.com/@exptechtw"
