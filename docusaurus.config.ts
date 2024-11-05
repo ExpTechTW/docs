@@ -86,6 +86,12 @@ const config: Config = {
           label: 'CDPS',
         },
         {
+          type: 'docSidebar',
+          sidebarId: 'tremSidebar',
+          position: 'left',
+          label: 'TREM',
+        },
+        {
           href: 'https://github.com/exptechtw/docs',
           label: 'GitHub',
           position: 'right',
