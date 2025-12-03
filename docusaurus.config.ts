@@ -1,6 +1,7 @@
 import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
+import { ScalarOptions } from '@scalar/docusaurus';
 
 const config: Config = {
   title: 'ExpTech 技術文件',
@@ -21,6 +22,21 @@ const config: Config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
   onDuplicateRoutes: "throw",
+
+  plugins: [
+[
+      '@scalar/docusaurus',
+      {
+        label: 'Scalar',
+        route: '/scalar',
+        configuration: {
+          url: 'http://localhost:3000/openapi.yml',
+          title: 'ExpTech API',
+          defaultOpenAllTags: true,
+        },
+      } as ScalarOptions,
+    ],
+  ],
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -69,12 +85,6 @@ const config: Config = {
       items: [
         {
           type: 'docSidebar',
-          sidebarId: 'apiSidebar',
-          position: 'left',
-          label: 'API',
-        },
-        {
-          type: 'docSidebar',
           sidebarId: 'jsApiWrapperSidebar',
           position: 'left',
           label: 'API Wrapper',
@@ -110,7 +120,7 @@ const config: Config = {
           items: [
             {
               label: 'API',
-              to: '/docs/api/earthquake/report',
+              to: '/scalar',
             },
             {
               label: 'API Wrapper',

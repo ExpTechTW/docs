@@ -1,0 +1,692 @@
+openapi: "3.1.0"
+
+info:
+  title: ExpTech API
+  version: 1.0.0
+  description: |
+    ExpTech API provides comprehensive real-time earthquake monitoring, early warning systems, and seismic data for Taiwan and surrounding regions.
+
+    ## Overview
+
+    This API aggregates and delivers critical seismic information from multiple authoritative sources including:
+    - **Central Weather Administration (CWA)** - Taiwan's official meteorological agency
+    - **Japan Meteorological Agency (JMA)** - For earthquakes affecting the region
+    - **Korea Meteorological Administration (KMA)** - For Korean Peninsula seismic events
+    - **TREM (Taiwan Real-time Earthquake Monitoring)** - Community-driven real-time monitoring network
+
+    ## Key Features
+
+    - **Real-time Early Warning (EEW)**: Receive earthquake early warnings with P-wave arrival predictions, allowing critical seconds for safety measures
+    - **Historical Reports**: Access detailed earthquake reports with region and town-level intensity data
+    - **Live Station Data**: Monitor real-time seismic station measurements including PGA (Peak Ground Acceleration), PGV (Peak Ground Velocity), and intensity calculations
+    - **Multi-region Coverage**: Data from Taiwan, Japan, Korea, and surrounding areas
+    - **High Availability**: Distributed infrastructure across Taipei, Tainan, and Singapore for optimal performance and redundancy
+
+    ## Use Cases
+
+    - Emergency response systems and disaster management platforms
+    - Public safety applications and alert systems
+    - Research and seismological analysis
+    - Educational tools and earthquake awareness applications
+    - Infrastructure monitoring and automated safety protocols
+
+    ## Rate Limits
+
+    The API is rate-limited to **250 requests per 10 minutes** per IP address via Cloudflare protection.
+
+    Please design your applications to respect this limit to ensure continued access to the service.
+
+servers:
+  - url: https://api.exptech.dev/api/v1
+    description: Primary API endpoint with automatic routing to available core servers (Taipei or Tainan). Recommended for earthquake reports and historical EEW queries with timestamps.
+  - url: https://api-1.exptech.dev/api/v1
+    description: Direct connection to Core Server 1 (Tainan). Optimized for earthquake reports with shorter cache times. Supports timestamp-based EEW queries. Required for authentication endpoints.
+  - url: https://api-2.exptech.dev/api/v1
+    description: Direct connection to Core Server 2 (Taipei). Optimized for earthquake reports with shorter cache times. Supports timestamp-based EEW queries.
+  - url: https://lb.exptech.dev/api/v1
+    description: Main load balancer with automatic distribution across all regions (TPE1, TPE2, SGP1, SGP2). Recommended for real-time EEW and RTS data (always returns latest). Note - timestamp parameters are ignored on load balancers.
+  - url: https://lb-1.exptech.dev/api/v1
+    description: Regional Load Balancer 1 (Taipei Primary). Optimized for latest real-time EEW and RTS data. Timestamp parameters are ignored.
+  - url: https://lb-2.exptech.dev/api/v1
+    description: Regional Load Balancer 2 (Taipei Secondary). Optimized for latest real-time EEW and RTS data. Timestamp parameters are ignored.
+  - url: https://lb-3.exptech.dev/api/v1
+    description: Regional Load Balancer 3 (Singapore Primary). Optimized for latest real-time EEW and RTS data. Timestamp parameters are ignored.
+  - url: https://lb-4.exptech.dev/api/v1
+    description: Regional Load Balancer 4 (Singapore Secondary). Optimized for latest real-time EEW and RTS data. Timestamp parameters are ignored.
+tags:
+  - name: Earthquake
+    description: |
+      Comprehensive earthquake monitoring and early warning system APIs for Taiwan and surrounding regions.
+
+      This API provides access to:
+      - **Earthquake Reports**: Historical and recent earthquake reports from the Central Weather Administration (CWA) with detailed intensity data by region and town
+      - **Early Warning System (EEW)**: Real-time earthquake early warnings from multiple sources including CWA (Taiwan), JMA (Japan), KMA (Korea), and TREM (Taiwan Real-time Earthquake Monitoring)
+      - **Real-time Station Data**: Live seismic station measurements including Peak Ground Acceleration (PGA), Peak Ground Velocity (PGV), and intensity calculations
+
+      The data includes precise epicenter locations, magnitude estimations, depth measurements, intensity distributions across affected areas, and P-wave arrival predictions for early warning systems.
+  - name: Authentication
+    description: |
+      User authentication and token management APIs.
+
+      **Important**: Authentication endpoints are only available on api-1.exptech.dev (Core Server 1 - Tainan).
+      You can also use api.exptech.dev as an alias, which will route to the authentication server.
+
+      All authentication responses include access tokens and refresh tokens for secure API access.
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: JWT access token obtained from login or refresh endpoints
+  schemas:
+    TownIntensity:
+      type: object
+      properties:
+        lat:
+          type: number
+          format: float
+          description: The latitude of the town
+          example: 24.14
+        lon:
+          type: number
+          format: float
+          description: The longitude of the town
+          example: 121.27
+        int:
+          type: integer
+          format: int32
+          description: The intensity level of the town
+          example: 2
+
+    RegionIntensity:
+      type: object
+      properties:
+        int:
+          type: integer
+          format: int32
+          description: The intensity level of the region
+          example: 2
+        town:
+          type: object
+          description: Town-level intensity data
+          additionalProperties:
+            $ref: "#/components/schemas/TownIntensity"
+
+    EarthquakeReport:
+      type: object
+      required:
+        - id
+        - no
+        - lat
+        - lon
+        - depth
+        - loc
+        - mag
+        - time
+        - list
+      properties:
+        id:
+          type: string
+          description: The ID of the earthquake report
+          example: "CWA-EQ114143-2025-1202-100123"
+        no:
+          type: integer
+          format: int32
+          description: The number of the earthquake report
+          example: 114143
+        lat:
+          type: number
+          format: float
+          description: The latitude of the earthquake epicenter
+          example: 24.43
+        lon:
+          type: number
+          format: float
+          description: The longitude of the earthquake epicenter
+          example: 121.86
+        depth:
+          type: number
+          format: float
+          description: The depth of the earthquake in kilometers
+          example: 11.7
+        loc:
+          type: string
+          description: The location description of the earthquake
+          example: "宜蘭縣政府南南東方  34.4  公里 (位於宜蘭縣近海)"
+        mag:
+          type: number
+          format: float
+          description: The magnitude of the earthquake
+          example: 4.3
+        time:
+          type: integer
+          format: int64
+          description: The timestamp of the earthquake in milliseconds
+          example: 1764640883000
+        list:
+          type: object
+          description: Region and town-level intensity data
+          additionalProperties:
+            x-additionalPropertiesName: 縣市
+            $ref: "#/components/schemas/RegionIntensity"
+
+    StationData:
+      type: object
+      required:
+        - pga
+        - pgv
+        - i
+        - I
+      properties:
+        pga:
+          type: number
+          format: float
+          description: Peak Ground Acceleration
+          example: 3.51
+        pgv:
+          type: number
+          format: float
+          description: Peak Ground Velocity
+          example: 0.55
+        i:
+          type: number
+          format: float
+          description: Real-time intensity
+          example: -2.9
+        I:
+          type: number
+          format: float
+          description: Attenuation intensity by time
+          example: -3
+        alert:
+          type: boolean
+          description: Whether this station has triggered an alert
+          example: true
+
+    RegionIntensityData:
+      type: object
+      required:
+        - code
+        - i
+      properties:
+        code:
+          type: integer
+          format: int32
+          description: Postal code of the region
+          example: 100
+        i:
+          type: integer
+          format: int32
+          description: Intensity of that region
+          example: 3
+
+    TREMRealTimeStation:
+      type: object
+      required:
+        - station
+        - box
+        - int
+        - time
+      properties:
+        station:
+          type: object
+          description: Station data indexed by station ID
+          additionalProperties:
+            $ref: "#/components/schemas/StationData"
+        box:
+          type: object
+          description: Box-divided areas of Taiwan with intensity data
+          additionalProperties:
+            type: integer
+            format: int32
+            description: Intensity within that box area
+        int:
+          type: array
+          description: Regional intensities by postal code
+          items:
+            $ref: "#/components/schemas/RegionIntensityData"
+        time:
+          type: integer
+          format: int64
+          description: Timestamp in milliseconds
+          example: 1764727731999
+    EarthquakeData:
+      type: object
+      required:
+        - time
+        - lon
+        - lat
+        - depth
+        - mag
+        - loc
+        - max
+      properties:
+        time:
+          type: integer
+          format: int64
+          description: The timestamp of the earthquake in milliseconds
+          example: 1764640886000
+        lon:
+          type: number
+          format: float
+          description: The longitude of the earthquake epicenter
+          example: 121.88
+        lat:
+          type: number
+          format: float
+          description: The latitude of the earthquake epicenter
+          example: 24.61
+        depth:
+          type: number
+          format: float
+          description: The depth of the earthquake in kilometers
+          example: 10
+        mag:
+          type: number
+          format: float
+          description: The magnitude of the earthquake
+          example: 3.7
+        loc:
+          type: string
+          description: The location description of the earthquake
+          example: "宜蘭縣近海"
+        max:
+          type: integer
+          format: int32
+          description: Maximum intensity
+          example: 4
+        area:
+          type: object
+          description: Area intensity data (TREM only) - intensity level as key, array of postal codes as value
+          additionalProperties:
+            type: array
+            items:
+              type: string
+              description: Postal code
+          example:
+            "1": ["104", "105", "110"]
+            "2": ["100", "103", "106"]
+
+    EarthquakeEarlyWarning:
+      type: object
+      required:
+        - author
+        - id
+        - serial
+        - status
+        - final
+        - eq
+        - time
+      properties:
+        author:
+          type: string
+          enum: [cwa, jma, kma, trem]
+          description: The author of the early warning
+          example: "trem"
+        id:
+          type: string
+          description: The ID of the early warning
+          example: "1764640889078"
+        serial:
+          type: integer
+          format: int32
+          description: Sequence number of the early warning
+          example: 16
+        status:
+          type: integer
+          format: int32
+          description: Status of the early warning
+          example: 0
+        final:
+          type: integer
+          format: int32
+          description: Whether this is the final report (0 or 1)
+          example: 1
+        rts:
+          type: boolean
+          description: Whether this EEW is triggered by an RTS alert (TREM only)
+          example: true
+        detail:
+          type: integer
+          format: int32
+          enum: [0, 1]
+          description: "Detail level: 1 = is an EEW with p-wave, 0 = no p-wave (TREM only)"
+          example: 1
+        reason:
+          type: integer
+          format: int32
+          enum: [1, 2, 3, 4, 5]
+          description: "Reason code: 1=observed EEW updates, 2=expected magnitude updates, 3=expected intensity updates (NSSPE), 4=final report, 5=cancellation (TREM only)"
+          example: 4
+        trigger:
+          type: integer
+          format: int32
+          description: Amount of triggered stations (TREM only)
+          example: 11
+        eq:
+          $ref: "#/components/schemas/EarthquakeData"
+        time:
+          type: integer
+          format: int64
+          description: The timestamp when this warning was issued in milliseconds
+          example: 1764640907000
+
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          description: User email address
+          example: "user@example.com"
+        password:
+          type: string
+          format: password
+          description: User password
+          example: "securePassword123"
+
+    LoginResponse:
+      type: object
+      required:
+        - expires_at
+        - message
+        - refresh_token
+        - token
+      properties:
+        expires_at:
+          type: string
+          format: date-time
+          description: Token expiration date and time
+          example: "2025-12-04T10:00:00Z"
+        message:
+          type: string
+          description: Login status message
+          example: "Login successful"
+        refresh_token:
+          type: string
+          description: Refresh token for obtaining new access tokens
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.refresh..."
+        token:
+          type: string
+          description: Access token for authenticated requests
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.access..."
+
+    RefreshRequest:
+      type: object
+      required:
+        - refresh_token
+      properties:
+        refresh_token:
+          type: string
+          description: Refresh token obtained from login response
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.refresh..."
+
+    RefreshResponse:
+      type: object
+      required:
+        - expires_at
+        - message
+        - token
+      properties:
+        expires_at:
+          type: string
+          format: date-time
+          description: New token expiration date and time
+          example: "2025-12-04T10:00:00Z"
+        message:
+          type: string
+          description: Refresh status message
+          example: "Token refreshed successfully"
+        token:
+          type: string
+          description: New access token for authenticated requests
+          example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.access..."
+
+    LogoutResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          description: Logout status message
+          example: "Logout successful"
+
+paths:
+  /eq/report:
+    get:
+      summary: Get Earthquake Reports
+      description: |
+        Retrieves historical and recent earthquake reports from the Central Weather Administration (CWA).
+
+        **Recommended Server**: Use API endpoints (api.exptech.dev, api-1, api-2) for optimal performance with shorter cache times.
+
+        Note: Load balancers have longer cache times and may not reflect the most recent reports immediately.
+      tags: [Earthquake]
+      parameters:
+        - name: limit
+          in: query
+          description: The number of reports to return
+          required: false
+          schema:
+            type: integer
+            format: int32
+            default: 1
+            minimum: 1
+            maximum: 100
+      responses:
+        200:
+          description: Successfully retrieved earthquake reports from CWA with detailed intensity data
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EarthquakeReport"
+              example:
+                - id: "CWA-EQ114143-2025-1202-100123"
+                  no: 114143
+                  lat: 24.43
+                  lon: 121.86
+                  depth: 11.7
+                  loc: "宜蘭縣政府南南東方  34.4  公里 (位於宜蘭縣近海)"
+                  mag: 4.3
+                  time: 1764640883000
+  /eq/eew:
+    get:
+      summary: Get Earthquake Early Warning Data
+      description: |
+        Retrieves the latest earthquake early warning (EEW) data from multiple sources (CWA, JMA, KMA, TREM).
+
+        **Recommended Server**: Use load balancer endpoints (lb.exptech.dev, lb-1 through lb-4) for real-time latest data with optimal performance.
+
+        Note: Works on API endpoints but load balancers are optimized for real-time EEW retrieval.
+      tags: [Earthquake]
+      responses:
+        200:
+          description: Successfully retrieved latest earthquake early warnings from all sources (CWA, JMA, KMA, TREM)
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EarthquakeEarlyWarning"
+  /eq/eew/:timestamp:
+    get:
+      summary: Get Earthquake Early Warning Data by timestamp
+      description: |
+        Retrieves historical earthquake early warning (EEW) data for a specific timestamp.
+
+        **Required Server**: Must use API endpoints (api.exptech.dev, api-1, api-2). Timestamp parameters are ignored on load balancers.
+
+        Load balancers always return the latest data regardless of timestamp parameter.
+      tags: [Earthquake]
+      parameters:
+        - name: timestamp
+          in: path
+          description: The timestamp of the earthquake early warning (only works on API endpoints)
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        200:
+          description: Successfully retrieved historical earthquake early warning data for the specified timestamp
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/EarthquakeEarlyWarning"
+  /trem/rts:
+    get:
+      summary: Get TREM Real-time Station Data
+      description: |
+        Retrieves the latest real-time seismic station data from the TREM (Taiwan Real-time Earthquake Monitoring) network.
+
+        **Recommended Server**: Use load balancer endpoints (lb.exptech.dev, lb-1 through lb-4) for real-time latest data with optimal performance.
+
+        Note: Works on API endpoints but load balancers are optimized for real-time RTS retrieval.
+      tags: [Earthquake]
+      responses:
+        200:
+          description: Successfully retrieved latest real-time seismic station data including PGA, PGV, and calculated intensity values from the TREM network
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/TREMRealTimeStation"
+  /auth/login:
+    post:
+      summary: Login
+      description: |
+        Authenticates a user and returns access and refresh tokens.
+
+        The access token should be included in the Authorization header for authenticated requests.
+        The refresh token can be used to obtain new access tokens when the current token expires.
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginRequest"
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LoginResponse"
+        400:
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Email and password are required"
+        401:
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Invalid email or password"
+  /auth/refresh:
+    post:
+      summary: Refresh service token
+      description: |
+        Refreshes an expired or expiring access token using a valid refresh token.
+
+        This endpoint allows you to obtain a new access token without requiring the user to log in again.
+        The refresh token remains valid and can be reused until it expires.
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RefreshRequest"
+      responses:
+        200:
+          description: Token refreshed successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshResponse"
+        400:
+          description: Invalid request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Refresh token is required"
+        401:
+          description: Invalid or expired refresh token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Invalid or expired refresh token"
+  /auth/logout:
+    post:
+      summary: Logout
+      description: |
+        Logs out the current user by invalidating their access token.
+
+        Requires a valid access token in the Authorization header.
+        After successful logout, the token will no longer be valid for authenticated requests.
+      tags: [Authentication]
+      security:
+        - BearerAuth: []
+      responses:
+        200:
+          description: Logout successful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LogoutResponse"
+        401:
+          description: Missing access token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Access token required"
+        403:
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    description: The error message
+                    example: "Invalid token"
